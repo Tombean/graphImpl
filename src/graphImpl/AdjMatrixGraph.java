@@ -5,10 +5,6 @@
  */
 package graph;
 
-/**
- *
- * @author Miro boss
- */
 public  class AdjMatrixGraph implements Graph {
     /**
    *  adjMatrix references the adjacency matrix of the graph.
