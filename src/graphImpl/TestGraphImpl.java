@@ -5,10 +5,6 @@
  */
 package graph;
 
-/**
- *
- * @author Miro boss
- */
 public class TestGraphImpl {
      public static void main(String[] args) {
 
