@@ -20,7 +20,7 @@ public class AdjMatric implements Graph {
 	    boolean directed;
 	    
 	   /**
-	   *  Constructs a graph with n vertices and no edges.
+	   *  Constructs a graph with n vertices and no edges, directed or not.
 	   */
 	  public AdjMatric(int n, boolean directed) {
 		this.directed =  directed;
@@ -40,7 +40,9 @@ public class AdjMatric implements Graph {
 	    return (getIndiceOfVertex(v) >= 0) && (getIndiceOfVertex(v) < vertices);
 	  }
 	
-	  
+	  /** Returns the indice of a vertex
+	   * @param v the vertex
+	   */
 	  public int getIndiceOfVertex( Vertex v){
 		  int ind = vertexList.length + 1;
 		  for ( int i = 0; i < vertexList.length; i++ ){
@@ -50,8 +52,8 @@ public class AdjMatric implements Graph {
 	  }
 	  /**
 	   *  Returns true if edge (sourceVertex, targetVertex) exists; false otherwise.
-	   *  @param origin the origin vertex.
-	   *  @param end the destination vertex.
+	   *  @param origin the origin of a vertex.
+	   *  @param end the end of a vertex.
 	   *  @return boolean indicating the presence of edge (origin, destination).
 	   */
 	  @Override
@@ -68,9 +70,8 @@ public class AdjMatric implements Graph {
 	
 	  
 	  /**
-	   *  Deletes the edge (origin, end).  If the edge existed, decrements
-	   *    the edge count.
-	   *  @param origin the origin vertex.
+	   *  Deletes the edge (origin, end).
+	   *  @param origin the origin  vertex.
 	   *  @param end the destination vertex.
 	   */
 	  @Override
@@ -104,6 +105,11 @@ public class AdjMatric implements Graph {
 		else {return false; }
 	}
 
+	 /**
+	 * Adds the specified vertex to this graph if not already present.
+	 * @param v a vertex.
+	 * @return boolean indicating if the vertex has successfully added to the graph.
+	 */
 	@Override
 	public boolean addVertexToGraph(Vertex v) {
 		boolean added = false;
@@ -116,18 +122,34 @@ public class AdjMatric implements Graph {
 		}while( i<=vertices && added == false);
 		return added;
 	}
-
+	
+	/**
+	 * Returns true if this graph contains the specified edge.
+	 * @param e an edge
+	 * @return boolean
+	 */
 	@Override
 	public boolean containsEdge(Edge e) {
 		return ( hasEdge( e.getCoordinates()[0], e.getCoordinates()[1]) );
 	}
 
+	/**
+	 * Returns an edge connecting source vertex to target vertex.
+	 * @param origin the origin vertex.
+	 * @param end the end vertex.
+	 * @return Edge
+	 */
 	@Override
 	public Edge getEdge(Vertex origin, Vertex end) {
 		return adjMatrix[getIndiceOfVertex(origin)][getIndiceOfVertex(end)];
 	}
 
-
+	/**
+	 * Checks if two edges are adjacent
+	 * @param A an edge
+	 * @param B an edge
+	 * @return returns true if the two edges are adjacent
+	 */
 	@Override
 	public boolean isAdjacent(Edge A, Edge B) {
 		if (!A.equals(B)){
@@ -141,12 +163,21 @@ public class AdjMatric implements Graph {
 		return false;
 	}
 
+	/**
+	 * Indicates if an edge is directed or undirected
+	 * @param e an edge
+	 * @return true if directed, false if not
+	 */
 	@Override
 	public boolean isDirected(Edge e) { 
 		return ( e instanceof DirectedEdge);
 	}
 
-
+	/**
+	 * Removes the specified vertex from the graph.
+	 * @param v a vertex
+	 * @return true if the vertex has been removed with no issue
+	 */
 	@Override
 	public boolean removeVertex(Vertex v) {
 		boolean deleted = false;
