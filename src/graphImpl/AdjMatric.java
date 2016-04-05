@@ -150,13 +150,20 @@ public class AdjMatric implements Graph {
 	@Override
 	public boolean removeVertex(Vertex v) {
 		boolean deleted = false;
-		int i = 0;
-		do{
-			if ( vertexList[i] ==  v) { 
-				vertexList[i] = null;
-				deleted = true;
-			}
-		}( i<vertices && deleted == false);
+		if ( validVertex(v) ){	
+			int i = 0;
+			do{
+				if ( vertexList[i] ==  v) { 
+					for (int j = 0; j< vertices; j ++){
+						adjMatrix[getIndiceOfVertex(v)][j] = null;
+						adjMatrix[j][getIndiceOfVertex(v)] = null;
+					}
+					vertexList[i] = null;
+					deleted = true;
+				}
+			}( i<vertices && deleted == false);
+			vertices--;
+		}
 		return deleted;
 	}
 
