@@ -56,10 +56,15 @@ public class AdjMatric implements Graph {
 	  @Override
 	  public boolean hasEdge(Vertex origin, Vertex end) {
 		  if (validVertex(origin) && validVertex(end)) {
-			  return ( adjMatrix[getIndiceOfVertex(origin)][getIndiceOfVertex(end)] != null ) ; 
-		  }
-		  else { return false;}
+			  if(directed){ return ( adjMatrix[getIndiceOfVertex(origin)][getIndiceOfVertex(end)] != null ) ; }
+			  else { 
+				  return ( adjMatrix[getIndiceOfVertex(origin)][getIndiceOfVertex(end)] != null 
+						  && adjMatrix[getIndiceOfVertex(end)][getIndiceOfVertex(origin)] != null ) ; 
+				  }
+			  }
+	  		else { return false;}
 	  }
+	
 	  
 	  /**
 	   *  Deletes the edge (origin, end).  If the edge existed, decrements
@@ -70,9 +75,12 @@ public class AdjMatric implements Graph {
 	  @Override
 	  public void removeEdge(Vertex origin, Vertex end) {
 	    if (validVertex(origin) && validVertex(end)) {
-	      if ( !(hasEdge( origin, end ) ) ) {
+	      if ( !hasEdge( origin, end )  ) {
 	    	  adjMatrix[getIndiceOfVertex(origin)][getIndiceOfVertex(end)] = null;
-	    	  edges--;
+	    	  if (!directed && !hasEdge( origin, end )){
+	    		  adjMatrix[getIndiceOfVertex(end)][getIndiceOfVertex(origin)] = null; 
+	    		  adjMatrix[getIndiceOfVertex(origin)][getIndiceOfVertex(end)] = null;
+	    	  }
 	      }
 	    }        
 	  }
@@ -88,6 +96,7 @@ public class AdjMatric implements Graph {
 	public boolean addEdgeToGraph(Vertex origin, Vertex end, Edge edge) {
 		if (validVertex(origin) && validVertex(end)) {
 		    	adjMatrix[getIndiceOfVertex(origin)][getIndiceOfVertex(end)] = edge;
+		    	if (!directed){adjMatrix[getIndiceOfVertex(end)][getIndiceOfVertex(origin)] = edge; }
 		        edges++;
 		        return true;
 		}		     
