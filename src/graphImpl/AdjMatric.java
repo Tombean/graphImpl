@@ -104,27 +104,39 @@ public class AdjMatric implements Graph {
 	}
 
 	@Override
-	public boolean addVertexToGraph(Vertex arg0) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean addVertexToGraph(Vertex v) {
+		boolean added = false;
+		int i = 0;
+		do{
+			if ( vertexList[i] ==  null) { 
+				vertexList[i] = v;
+				added = true;
+			}
+		}( i<=vertices && added == false);
+		return added;
 	}
 
 	@Override
-	public boolean containsEdge(Edge arg0) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean containsEdge(Edge e) {
+		return ( hasEdge( e.getCoordinates()[0], e.getCoordinates()[1]) );
 	}
 
 	@Override
-	public Edge getEdge(Vertex arg0, Vertex arg1) {
-		// TODO Auto-generated method stub
-		return null;
+	public Edge getEdge(Vertex origin, Vertex end) {
+		return adjMatrix[getIndiceOfVertex(origin)][getIndiceOfVertex(end)];
 	}
 
 
 	@Override
-	public boolean isAdjacent(Edge arg0, Edge arg1) {
-		// TODO Auto-generated method stub
+	public boolean isAdjacent(Edge A, Edge B) {
+		if (!A.equals(B)){
+			if (directed && (A.getCoordinates()[0] == B.getCoordinates()[1] 
+					|| A.getCoordinates()[1] == B.getCoordinates()[0])) { return true;}
+			if (!directed && (A.getCoordinates()[0] == B.getCoordinates()[1] 
+					|| A.getCoordinates()[1] == B.getCoordinates()[0] 
+					|| A.getCoordinates()[0] == B.getCoordinates()[0] 
+					|| A.getCoordinates()[1] == B.getCoordinates()[1])) { return true;}
+		}
 		return false;
 	}
 
