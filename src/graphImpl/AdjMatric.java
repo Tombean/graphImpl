@@ -113,7 +113,7 @@ public class AdjMatric implements Graph {
 				vertexList[i] = v;
 				added = true;
 			}
-		}( i<=vertices && added == false);
+		}while( i<=vertices && added == false);
 		return added;
 	}
 
@@ -161,7 +161,7 @@ public class AdjMatric implements Graph {
 					vertexList[i] = null;
 					deleted = true;
 				}
-			}( i<vertices && deleted == false);
+			}while( i<vertices && deleted == false);
 			vertices--;
 		}
 		return deleted;
