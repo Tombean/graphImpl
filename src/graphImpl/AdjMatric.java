@@ -41,6 +41,14 @@ public class AdjMatric implements Graph {
 	  }
 	
 	  
+	  public boolean containsVertex( Vertex v ){
+		  boolean present = false;
+		  for ( int i = 0; i< vertices ; i ++){
+			  if( vertexList[i] == v){ present = true; }
+		  }
+		  return present;
+	  }
+	  
 	  public int getIndiceOfVertex( Vertex v){
 		  int ind = vertexList.length + 1;
 		  for ( int i = 0; i < vertexList.length; i++ ){
@@ -95,13 +103,20 @@ public class AdjMatric implements Graph {
 	   */
 	@Override
 	public boolean addEdgeToGraph(Vertex origin, Vertex end, Edge edge) {
+		if (! (containsVertex(origin) ) ){ 
+			System.out.println("New Vertex added : "+addVertexToGraph( origin ) );
+		}
+		if (! (containsVertex(end) ) ){ 
+			System.out.println("New Vertex added : "+addVertexToGraph( end ) );
+		}
 		if (validVertex(origin) && validVertex(end)) {
 		    	adjMatrix[getIndiceOfVertex(origin)][getIndiceOfVertex(end)] = edge;
 		    	if (!directed){adjMatrix[getIndiceOfVertex(end)][getIndiceOfVertex(origin)] = edge; }
 		        edges++;
 		        return true;
 		}		     
-		else {return false; }
+		else {
+			return false; }
 	}
 
 	@Override
@@ -113,6 +128,7 @@ public class AdjMatric implements Graph {
 				vertexList[i] = v;
 				added = true;
 			}
+			i++;
 		}while( i<=vertices && added == false);
 		return added;
 	}
@@ -121,7 +137,7 @@ public class AdjMatric implements Graph {
 	public boolean containsEdge(Edge e) {
 		return ( hasEdge( e.getCoordinates()[0], e.getCoordinates()[1]) );
 	}
-
+	
 	@Override
 	public Edge getEdge(Vertex origin, Vertex end) {
 		return adjMatrix[getIndiceOfVertex(origin)][getIndiceOfVertex(end)];
@@ -131,10 +147,10 @@ public class AdjMatric implements Graph {
 	@Override
 	public boolean isAdjacent(Edge A, Edge B) {
 		if (!A.equals(B)){
-			if (directed && (A.getCoordinates()[0] == B.getCoordinates()[1] 
-					|| A.getCoordinates()[1] == B.getCoordinates()[0])) { return true;}
-			if (!directed && (A.getCoordinates()[0] == B.getCoordinates()[1] 
-					|| A.getCoordinates()[1] == B.getCoordinates()[0] 
+			if (directed && (( ( (Edge) A ).getCoordinates()[0] ==  ( (Edge) B).getCoordinates()[1] ) 
+					|| ((Edge)A).getCoordinates()[1] ==  ( (Edge) B).getCoordinates()[0] )) { return true;}
+			if (!directed && ( ((Edge)A).getCoordinates()[0] == ((Edge)B).getCoordinates()[1] 
+					|| A.getCoordinates()[1] == B.getCoordinates()[0]
 					|| A.getCoordinates()[0] == B.getCoordinates()[0] 
 					|| A.getCoordinates()[1] == B.getCoordinates()[1])) { return true;}
 		}
@@ -171,6 +187,14 @@ public class AdjMatric implements Graph {
 	public boolean sontLies(Vertex arg0, Vertex arg1) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	
+	public Vertex[] getAllVertices(){
+		return this.vertexList;
+	}
+	
+	public Edge[][] getAdjacencyMatrix(){
+		return this.adjMatrix;
 	}
 
 
