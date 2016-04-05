@@ -40,6 +40,7 @@ public class AdjMatric implements Graph {
 	    return (getIndiceOfVertex(v) >= 0) && (getIndiceOfVertex(v) < vertices);
 	  }
 	
+
 	  
 	  public boolean containsVertex( Vertex v ){
 		  boolean present = false;
@@ -173,7 +174,7 @@ public class AdjMatric implements Graph {
 		if (!A.equals(B)){
 			if (directed && (( ( (Edge) A ).getCoordinates()[0] ==  ( (Edge) B).getCoordinates()[1] ) 
 					|| ((Edge)A).getCoordinates()[1] ==  ( (Edge) B).getCoordinates()[0] )) { return true;}
-			if (!directed && ( ((Edge)A).getCoordinates()[0] == ((Edge)B).getCoordinates()[1] 
+			if (!directed && ( A.getCoordinates()[0] == B.getCoordinates()[1] 
 					|| A.getCoordinates()[1] == B.getCoordinates()[0]
 					|| A.getCoordinates()[0] == B.getCoordinates()[0] 
 					|| A.getCoordinates()[1] == B.getCoordinates()[1])) { return true;}

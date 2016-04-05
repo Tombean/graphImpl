@@ -16,7 +16,7 @@ public class TestGraphImpl {
 
     // Create an 3-vertex graph.
     System.out.println("Creating a graph with 3 vertices");
-    AdjMatric graph = new AdjMatric(3, false);
+    AdjMatric graph = new AdjMatric(5, false);
     double v1Coord[] = {0.3, 0.0};
     double v2Coord[] = {1.0, 1.2};
     double v3Coord[] = {2.0, -2.0};
@@ -26,10 +26,10 @@ public class TestGraphImpl {
     Vertex v3 = new Vertex(v3Coord);
     UndirectedEdge e1 = new UndirectedEdge(v1, v2);
     UndirectedEdge e2 = new UndirectedEdge(v2, v3);
-    System.out.println("Adding Edge e1 ( v1, v2 ) was successfully done  :  " + graph.addEdgeToGraph(v1, v2, (Edge)e1));
-    System.out.println("Adding Edge e2 ( v2, v3 ) was successfully done  :  " + graph.addEdgeToGraph(v2, v3, (Edge)e2));
+    System.out.println("Adding Edge e1 ( v1, v2 ) ..... e1 was successfully created  :  " + graph.addEdgeToGraph(v1, v2, (Edge)e1));
+    System.out.println("Adding Edge e2 ( v2, v3 ) ..... e2 was successfully created  :  " + graph.addEdgeToGraph(v2, v3, (Edge)e2));
     Edge[][] adjacencyMatrix = graph.getAdjacencyMatrix();
-    System.out.println("Checking if e1 and e2 are adjacent ... :  " + graph.isAdjacent( (Edge)e1, (Edge)e2 ) );
+    System.out.println("Checking if e1 and e2 are adjacent ...... Adjacency :  " + graph.isAdjacent( e1, e2 ) );
     System.out.println("\nThe graph has\n" + graph);
    
 }

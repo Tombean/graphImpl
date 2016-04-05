@@ -1,4 +1,4 @@
-package graph;
+package graphImpl.graph;
 
 public class TestGraph {
 	

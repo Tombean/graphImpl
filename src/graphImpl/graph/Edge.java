@@ -1,4 +1,4 @@
-package graph;
+package graphImpl.graph;
 
 public abstract class Edge {
     protected Vertex[] vertex;
