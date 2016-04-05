@@ -1,5 +1,6 @@
 package graphImpl;
 
+import graph.DirectedEdge;
 import graph.Edge;
 import graph.Graph;
 import graph.Vertex;
@@ -141,16 +142,22 @@ public class AdjMatric implements Graph {
 	}
 
 	@Override
-	public boolean isDirected(Edge arg0) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean isDirected(Edge e) { 
+		return ( e instanceof DirectedEdge);
 	}
 
 
 	@Override
-	public boolean removeVertex(Vertex arg0) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean removeVertex(Vertex v) {
+		boolean deleted = false;
+		int i = 0;
+		do{
+			if ( vertexList[i] ==  v) { 
+				vertexList[i] = null;
+				deleted = true;
+			}
+		}( i<vertices && deleted == false);
+		return deleted;
 	}
 
 	@Override
