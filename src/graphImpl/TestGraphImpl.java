@@ -23,7 +23,9 @@ public class TestGraphImpl {
     Vertex v1 = new Vertex(v1Coord);
     System.out.println("Adding Vertex v1 with the given coordinates :  ( " + v1.getCoordinates()[0] + " , "+v1.getCoordinates()[1] + " ) ");
     Vertex v2 = new Vertex(v2Coord);
+    System.out.println("Adding Vertex v2 with the given coordinates :  ( " + v2.getCoordinates()[0] + " , "+v2.getCoordinates()[1] + " ) ");
     Vertex v3 = new Vertex(v3Coord);
+    System.out.println("Adding Vertex v3 with the given coordinates :  ( " + v3.getCoordinates()[0] + " , "+v3.getCoordinates()[1] + " ) ");
     UndirectedEdge e1 = new UndirectedEdge(v1, v2);
     UndirectedEdge e2 = new UndirectedEdge(v2, v3);
     System.out.println("Adding Edge e1 ( v1, v2 ) ..... e1 was successfully created  :  " + graph.addEdgeToGraph(v1, v2, (Edge)e1));
