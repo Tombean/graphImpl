@@ -31,6 +31,7 @@ public class TestGraphImpl {
     Edge[][] adjacencyMatrix = graph.getAdjacencyMatrix();
     System.out.println("Checking if e1 and e2 are adjacent ...... Adjacency :  " + graph.isAdjacent( e1, e2 ) );
     System.out.println("\nThe graph has\n" + graph);
+    
    
 }
 }
