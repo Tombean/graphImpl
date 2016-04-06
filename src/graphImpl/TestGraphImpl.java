@@ -7,6 +7,7 @@ package graphImpl;
 
 import graph.Edge;
 import graph.UndirectedEdge;
+import graph.DirectedEdge;
 import graph.Vertex;
 
 public class TestGraphImpl {
