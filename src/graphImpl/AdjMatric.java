@@ -22,6 +22,8 @@ public class AdjMatric implements Graph {
 	    
 	   /**
 	   *  Constructs a graph with n vertices and no edges, directed or not.
+	   *  @param n number maximum of vertices in graph
+	   *  @param directed boolean indicating if it's a directed ( true ) or undirected ( false ) graph
 	   */
 	  public AdjMatric(int n, boolean directed) {
 		this.directed =  directed;
@@ -53,6 +55,7 @@ public class AdjMatric implements Graph {
 	  
 	  /** Returns the indice of a vertex
 	   * @param v the vertex
+	   * @return ind : int indicating the indice of the vertex
 	   */
 	  public int getIndiceOfVertex( Vertex v){
 		  int ind = vertexList.length + 1;
