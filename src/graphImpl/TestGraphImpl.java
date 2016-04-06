@@ -32,6 +32,8 @@ public class TestGraphImpl {
     System.out.println("Adding Edge e1 ( v1, v2 ) ..... e1 was successfully created  :  " + graph.addEdgeToGraph(v1, v2, (Edge)e1));
     System.out.println("Adding Edge e2 ( v2, v3 ) ..... e2 was successfully created  :  " + graph.addEdgeToGraph(v2, v3, (Edge)e2));
     Edge[][] adjacencyMatrix = graph.getAdjacencyMatrix();
+    System.out.println("Existence of an Edge bewteen ( v2, v3 ) :  " + graph.hasEdge(v2, v3) );
+    System.out.println("Existence of an Edge bewteen ( v1, v3 ) :  " + graph.hasEdge(v1, v3) );
     System.out.println("Checking if e1 and e2 are adjacent ...... Adjacency :  " + graph.isAdjacent( e1, e2 ) );
     System.out.println("\nThe graph has\n" + graph);
     
