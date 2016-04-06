@@ -16,7 +16,7 @@ public class TestGraphImpl {
     
 
     // Create an 3-vertex graph.
-    System.out.println("Creating a graph with 3 vertices");
+    System.out.println("Creating a graph with 5 vertices maximum");
     AdjMatric graph = new AdjMatric(5, false);
     double v1Coord[] = {0.3, 0.0};
     double v2Coord[] = {1.0, 1.2};
@@ -31,10 +31,13 @@ public class TestGraphImpl {
     UndirectedEdge e2 = new UndirectedEdge(v2, v3);
     System.out.println("Adding Edge e1 ( v1, v2 ) ..... e1 was successfully created  :  " + graph.addEdgeToGraph(v1, v2, (Edge)e1));
     System.out.println("Adding Edge e2 ( v2, v3 ) ..... e2 was successfully created  :  " + graph.addEdgeToGraph(v2, v3, (Edge)e2));
-    Edge[][] adjacencyMatrix = graph.getAdjacencyMatrix();
     System.out.println("Existence of an Edge bewteen ( v2, v3 ) :  " + graph.hasEdge(v2, v3) );
     System.out.println("Existence of an Edge bewteen ( v1, v3 ) :  " + graph.hasEdge(v1, v3) );
     System.out.println("Checking if e1 and e2 are adjacent ...... Adjacency :  " + graph.isAdjacent( e1, e2 ) );
+    Vertex[] neighbours = graph.getNeighbours(v2);
+    System.out.println("Neighbours of v2 are : ");
+    for ( int i = 0; i < neighbours.length ; i++){ System.out.print(neighbours[i].getCoordinates()[0] + " , " + neighbours[i].getCoordinates()[1] + " // "); }
+    
     System.out.println("\nThe graph has\n" + graph);
     
    

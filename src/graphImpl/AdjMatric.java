@@ -4,6 +4,7 @@ import graph.DirectedEdge;
 import graph.Edge;
 import graph.Graph;
 import graph.Vertex;
+import graph.UndirectedEdge;
 
 public class AdjMatric implements Graph {
 
@@ -114,7 +115,9 @@ public class AdjMatric implements Graph {
 		}
 		if (validVertex(origin) && validVertex(end)) {
 		    	adjMatrix[getIndiceOfVertex(origin)][getIndiceOfVertex(end)] = edge;
-		    	if (!directed){adjMatrix[getIndiceOfVertex(end)][getIndiceOfVertex(origin)] = edge; }
+		    	
+		    	if (!directed){
+		    		adjMatrix[getIndiceOfVertex(end)][getIndiceOfVertex(origin)] = new UndirectedEdge(end, origin); }
 		        edges++;
 		        return true;
 		}		     
@@ -161,6 +164,29 @@ public class AdjMatric implements Graph {
 	@Override
 	public Edge getEdge(Vertex origin, Vertex end) {
 		return adjMatrix[getIndiceOfVertex(origin)][getIndiceOfVertex(end)];
+	}
+	
+	/**
+	 * Returns an array of edges that are neighbours from the paramter vertex.
+	 * @param origin the vertex from whom you need neighbours.
+	 * @return neighbours
+	 */
+	public Vertex[] getNeighbours(Vertex origin) {
+		int numberOfNeighbours = 0;
+		for ( int i = 0; i < vertices ; i ++){
+			if ( adjMatrix[getIndiceOfVertex(origin)][i] != null) { numberOfNeighbours++;}
+		}
+		Vertex[] neighbours = new Vertex[numberOfNeighbours];
+		int indice = 0;
+		while ( numberOfNeighbours > 0 && indice < vertices) {
+			if ( adjMatrix[getIndiceOfVertex(origin)][indice] != null) {
+				neighbours[numberOfNeighbours-1] = adjMatrix[getIndiceOfVertex(origin)][indice].getCoordinates()[1];
+				numberOfNeighbours--;
+			}
+			indice++;
+		}
+		
+		return neighbours;
 	}
 
 	/**
