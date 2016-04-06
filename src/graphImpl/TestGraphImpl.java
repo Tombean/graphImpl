@@ -36,7 +36,7 @@ public class TestGraphImpl {
     System.out.println("Checking if e1 and e2 are adjacent ...... Adjacency :  " + graph.isAdjacent( e1, e2 ) );
     Vertex[] neighbours = graph.getNeighbours(v2);
     System.out.println("Neighbours of v2 are : ");
-    for ( int i = 0; i < neighbours.length ; i++){ System.out.print(neighbours[i].getCoordinates()[0] + " , " + neighbours[i].getCoordinates()[1] + " // "); }
+    for ( int i = 0; i < neighbours.length ; i++){ System.out.print(neighbours[i].getClass().getSimpleName() +" (" + neighbours[i].getCoordinates()[0] + ", " + neighbours[i].getCoordinates()[1] + ") // "); }
     
     System.out.println("\nThe graph has\n" + graph);
     
